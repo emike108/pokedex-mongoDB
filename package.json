@@ -4,7 +4,8 @@
   "description": "Fullstack Review",
   "main": "webpack.config.js",
   "scripts": {
-
+    "start": "nodemon server/index.js ",
+    "webpack": "webpack --mode development --watch"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,13 @@
     "url": "https://github.com/parkderick/hrla35-review/issues"
   },
   "homepage": "https://github.com/parkderick/hrla35-review#readme",
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.23.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -25,6 +32,7 @@
     "babel-loader": "^8.1.0",
     "nodemon": "^2.0.2",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.11"
-  }
+    "webpack-cli": "^3.3.12"
+  },
+  "keywords": []
 }
