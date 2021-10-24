@@ -3,6 +3,9 @@ const path = require('path');
 let app = express();
 const port = 4200;
 
+const db = require('../db/index.js');
+
+
 
 app.use(express.json())
 app.use(express.urlencoded({
