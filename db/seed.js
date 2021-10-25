@@ -1,11 +1,11 @@
 // const mongoose = require('mongoose');
 // // const db = require('./index.js');
 // const pokeData = require('../pokemon.json');
-// const Pokemon = require('./index.js');
 
 
 conn = new Mongo();
 db = connect('mongodb://127.0.0.1/pokedex');
+// const model = require('./index.js');
 
 const pokeData = [
   {
@@ -765,7 +765,7 @@ const pokeData = [
   }
 ];
 pokeData.forEach(pokemon => {
-  db.pokemon.insertOne(pokemon);
+  db.pokemons.insertOne(pokemon);
 });
 
 // function seed() {
