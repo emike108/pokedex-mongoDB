@@ -29,3 +29,8 @@ As of right now there are only 3 pokemon displayed on the static mockup.html and
 - Create a delete button to delete a pokemon. On click of the delete button, the pokemon should be removed from the page.
 
 - Lastly, implement the 'Insert' button so you can add a pokemon to the list.
+
+
+### Progress
+
+- All pokemon displayed using MongoDB from step 3, need to implement filter functionality.
