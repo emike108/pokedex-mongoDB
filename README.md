@@ -1,5 +1,7 @@
 # Fullstack Review
 
+Authors: Mike Ortiz & Dom Burnham
+
 ## GOAL
 
 As of right now there are only 3 pokemon displayed on the static mockup.html and none of the buttons are functioning. Implement the following functionality:
