@@ -1,40 +1,29 @@
-const express = require('express');
-const path = require('path');
-let app = express();
+const express = require("express");
+const path = require("path");
+const Pokemon = require("../db/models/pokemon");
+const db = require("../db/index.js");
+
+const app = express();
 const port = 4200;
-const axios = require('axios');
 
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
-const db = require('../db/index.js');
-// const Pokemon = require('../db/index.js');
-
-
-
-app.use(express.json())
-app.use(express.urlencoded({
-  extended: true
-}))
-app.use(express.static(path.join(__dirname, '../client/dist')));
-
-
-// app.get('/', function (req, res) {
-//   res.send('hello world')
-// })
-
-app.get('/pokemon', (req, res) => {
-  const query = db.Pokemon.find({})
-  // res.status(200).send(query.data)
-    .exec((err, results) => {
-      if (err) {
-        throw err
-      } else {
-
-        res.status(200).send(results)
-      }
-    })
-})
+app.get("/pokemon", async (_req, res) => {
+  try {
+    const pokemons = await Pokemon.find({});
+    res.status(200).json(pokemons);
+  } catch (err) {
+    console.error("Error fetching pokemons", err);
+    res.status(500).send("Server error");
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
-
