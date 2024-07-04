@@ -1,18 +1,18 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import { PokemonList } from './PokemonList.jsx';
-
+import axios from "axios";
+import React, { useState } from "react";
+import { PokemonList } from "./PokemonList.jsx";
 
 export function App() {
   const [display, setDisplay] = useState([]);
 
   function showAll() {
-    axios.get('/pokemon')
-    .then(results => {
-      console.log(results.data)
-      setDisplay(results.data)
-    })
-    .catch(err => console.error(err))
+    axios
+      .get("/pokemon")
+      .then((results) => {
+        console.log(results.data);
+        setDisplay(results.data);
+      })
+      .catch((err) => console.error(err));
   }
 
   return (
@@ -41,5 +41,5 @@ export function App() {
         </div>
       </div>
     </div>
-  )
+  );
 }
