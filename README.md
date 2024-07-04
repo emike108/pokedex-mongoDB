@@ -4,7 +4,6 @@
 
 As of right now there are only 3 pokemon displayed on the static mockup.html and none of the buttons are functioning. Implement the following functionality:
 
-
 ### Step 1
 
 - Build out an express server to serve the front end.
@@ -29,7 +28,6 @@ As of right now there are only 3 pokemon displayed on the static mockup.html and
 - Create a delete button to delete a pokemon. On click of the delete button, the pokemon should be removed from the page.
 
 - Lastly, implement the 'Insert' button so you can add a pokemon to the list.
-
 
 ### Progress
 
