@@ -3,16 +3,36 @@ import React, { useState } from "react";
 import { PokemonList } from "./PokemonList.jsx";
 
 export function App() {
-  const [display, setDisplay] = useState([]);
+  const [pokemonsToDisplay, setPokemonsToDisplay] = useState([]);
+  const [selectedPokemonType, setSelectedPokemonType] = useState("");
+  const [isHelperTextRendered, setIsHelperTextRendered] = useState(false);
 
   function showAll() {
+    if (selectedPokemonType === "" || selectedPokemonType === "Sort by Type") {
+      setIsHelperTextRendered(true);
+      setPokemonsToDisplay([]);
+      return;
+    }
+    setIsHelperTextRendered(false);
     axios
       .get("/pokemon")
       .then((results) => {
-        console.log(results.data);
-        setDisplay(results.data);
+        if (selectedPokemonType === "Show All") {
+          setPokemonsToDisplay(results.data);
+        } else {
+          setPokemonsToDisplay(
+            results.data.filter((eachPokemon) => {
+              return eachPokemon.type === selectedPokemonType;
+            })
+          );
+        }
       })
       .catch((err) => console.error(err));
+  }
+
+  function handleTypeSelection(event) {
+    const { value } = event.target;
+    setSelectedPokemonType(value);
   }
 
   return (
@@ -20,8 +40,9 @@ export function App() {
       <div>
         <h1>Pokemon!</h1>
         <button onClick={showAll}>Show All</button>
-        <select id="type">
+        <select id="type" onChange={handleTypeSelection}>
           <option>Sort by Type</option>
+          <option>Show All</option>
           <option>Grass</option>
           <option>Fire</option>
           <option>Water</option>
@@ -37,7 +58,12 @@ export function App() {
         </select>
         <button>INSERT</button>
         <div>
-          <PokemonList pokemons={display} />
+          {isHelperTextRendered ? (
+            <div>
+              <p>Please select a type to render</p>
+            </div>
+          ) : null}
+          <PokemonList pokemons={pokemonsToDisplay} />
         </div>
       </div>
     </div>
