@@ -1,34 +1,65 @@
-# Fullstack Review
+# Pokedex MongoDB
 
-## GOAL
+A Pokedex application built with MongoDB, Express, React, and Node.js (MERN stack).
 
-As of right now there are only 3 pokemon displayed on the static mockup.html and none of the buttons are functioning. Implement the following functionality:
+## Table of Contents
 
-### Step 1
+- [Pokedex MongoDB](#pokedex-mongodb)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Features](#features)
+  - [Contributing](#contributing)
 
-- Build out an express server to serve the front end.
-- Create a script for starting the server and for webpack. Run both.
-- Refactor your client to dynamically render from your React files.
-- You will know if you have done this correctly if you see bulbasaur, ivysaur, venasaur.
+## Installation
 
-### Step 2
+1. Clone the repository:
 
-- Using mongoDB, build out the back-end (establish connection, seed from pokemon.json)
+   ```
+   git clone https://github.com/<your_username>/pokedex-mongoDB.git
+   cd pokedex-mongoDB
+   ```
 
-### Step 3
+2. Install dependencies for the server:
+   ```
+   cd server
+    npm install
+   ```
+3. Install dependencies for the client:
+   ```
+    cd ../client
+    npm install
+   ```
+4. Start the server:
+   ```
+   cd ~
+   npm start
+   ```
+5. Start webpack
+   ```
+   cd ~
+   npm run webpack
+   ```
 
-- Create a GET route to display all the pokemon in your database on the page
-- Filter the displayed pokemon to match the type selected in the dropdown menu
-- Re-display all the pokemon on the page when 'Show All' is clicked
+## Usage
 
-### Step 4
+- Open your browser and go to `http://localhost:4200/` to view the application.
+- Use the `select` component to show/filter the list of Pokemon.
 
-- On click of the pokemon's name, enable editing through an input field. On 'submit', your component should re-render so the updated name is displayed.
+## Features
 
-- Create a delete button to delete a pokemon. On click of the delete button, the pokemon should be removed from the page.
+- View a list of Pokemon.
+- Filter Pokemon by type.
+- View details of a Pokemon.
+- Add a Pokemon to the Pokedex.
 
-- Lastly, implement the 'Insert' button so you can add a pokemon to the list.
+## Contributing
 
-### Progress
+Contributions are welcome! Please follow these steps to contribute:
 
-- All pokemon displayed using MongoDB from step 3, need to implement filter functionality.
+Fork the repository.
+Create a new branch (`git checkout -b feature/your-feature-name`).
+Make your changes.
+Commit your changes (`git commit -m 'Add some feature'`).
+Push to the branch (`git push origin feature/your-feature-name`).
+Open a pull request.
