@@ -6,7 +6,7 @@ const MONGO_URI = "mongodb://user:password@localhost:27017";
 mongoose.set("strictQuery", false);
 
 mongoose
-  .connect(`${MONGO_URI}/pokedex?authSource=admin`, {
+  .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
