@@ -7,6 +7,7 @@ const port = 3000;
 
 const MONGO_URI = "mongodb://user:password@localhost:27017";
 
+mongoose.set("strictQuery", false);
 // Connect to MongoDB using mongoose, start the server after successful connection
 mongoose
   .connect(MONGO_URI, {
