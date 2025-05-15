@@ -1,5 +1,5 @@
 // May or may not be needed to seed the database
-export const pokemonArray = [
+module.exports = [
   {
     name: "Bulbasaur",
     type: "Grass",
