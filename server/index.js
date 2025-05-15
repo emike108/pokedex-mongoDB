@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 // Import the mongoose module to connect to MongoDB
 const mongoose = require("mongoose");
 const app = express();
@@ -31,7 +32,12 @@ app.use(
   })
 );
 
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
 // Define a route handler for the default home page
 app.get("/", (_req, res) => {
   res.send("Hello World!");
 });
+
+//TODO: Create or replace the home route with route that pulls data from the database

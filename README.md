@@ -21,31 +21,49 @@ A Pokedex application built with MongoDB, Express, React, and Node.js (MERN stac
    ```
 
 2. Install dependencies for the server:
+
    ```
    cd server
     npm install
    ```
+
 3. Install dependencies for the client:
+
    ```
     cd ../client
     npm install
    ```
-4. Start the server:
+
+4. Spin up the MongoDB database using Docker:
+
+   In a terminal at the root of the project, run:
+   (Note, can add the -d flag to run in detached mode if desired)
+
    ```
-   cd ~
+   docker run --name pokemonDB -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=user -e MONGO_INITDB_ROOT_PASSWORD=password mongo:latest
+
+   ```
+
+5. Start the server:
+
+   In a terminal at the root of the project, run:
+
+   ```
    npm start
    ```
-5. Start webpack
+
+6. Start webpack
+
+   In a separate terminal at the root of the project, run:
+
    ```
    cd ~
    npm run webpack
-
-<!-- How to  start and seed the database via Docker -->
    ```
 
 ## Usage
 
-- Open your browser and go to `http://localhost:4200/` to view the application.
+- Open your browser and go to `http://localhost:3000/` to view the application.
 - Use the `select` component to show/filter the list of Pokemon.
 
 ## Features
