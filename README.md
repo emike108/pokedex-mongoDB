@@ -39,6 +39,8 @@ A Pokedex application built with MongoDB, Express, React, and Node.js (MERN stac
    ```
    cd ~
    npm run webpack
+
+<!-- How to  start and seed the database via Docker -->
    ```
 
 ## Usage

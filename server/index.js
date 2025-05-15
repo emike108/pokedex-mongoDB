@@ -1,10 +1,6 @@
 const express = require("express");
-const path = require("path");
-const Pokemon = require("../db/models/pokemon");
-const db = require("../db/index.js");
-
 const app = express();
-const port = 4200;
+const port = 3000;
 
 app.use(express.json());
 app.use(
@@ -12,18 +8,13 @@ app.use(
     extended: true,
   })
 );
-app.use(express.static(path.join(__dirname, "../client/dist")));
 
-app.get("/pokemon", async (_req, res) => {
-  try {
-    const pokemons = await Pokemon.find({});
-    res.status(200).json(pokemons);
-  } catch (err) {
-    console.error("Error fetching pokemons", err);
-    res.status(500).send("Server error");
-  }
+// Define a route handler for the default home page
+app.get("/", (_req, res) => {
+  res.send("Hello World!");
 });
 
+// Start the server
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });

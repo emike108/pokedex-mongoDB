@@ -23,7 +23,7 @@
   "ignorePatterns": ["node_modules/", "build/", "dist/"],
   //We can add/modify specific rules here
   "rules": {
-    "@typescript-eslint/no-var-requires": "warn",
+    "@typescript-eslint/no-var-requires": "off",
     "react/prop-types": "off"
   }
 }
