@@ -11,7 +11,8 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(async () => {
-    await Pokemon.deleteMany({}); // Clear collection if needed
+    // Clear collection if needed
+    await Pokemon.deleteMany({});
     await Pokemon.insertMany(pokemonArray);
     console.log("Seeded!");
     process.exit(0);

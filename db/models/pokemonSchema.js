@@ -7,7 +7,7 @@ const pokemonSchema = new mongoose.Schema({
   img: { type: String, required: true },
 });
 
-// First parameter is the model name, if it doesn't exist, it will be created
+// First parameter is the collection name, if the collection doesn't exist, it will be created
 const Pokemon = mongoose.model("pokemons", pokemonSchema);
 
 module.exports = Pokemon;
