@@ -14,6 +14,8 @@ export function App() {
       return;
     }
     setIsHelperTextRendered(false);
+
+    // Calling the route established in the server that then goes to the database
     axios
       .get("/pokemon")
       .then((results) => {
