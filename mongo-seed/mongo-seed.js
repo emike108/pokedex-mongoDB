@@ -1,4 +1,6 @@
-module.exports = [
+// Not defined in the repo but in the context of the db container db is defined as the current db in use
+// eslint-disable-next-line no-undef
+db.pokemons.insertMany([
   {
     name: "Bulbasaur",
     type: "Grass",
@@ -905,4 +907,4 @@ module.exports = [
     img: "http://vignette3.wikia.nocookie.net/nintendo/images/b/bf/Mew.png/revision/latest?cb=20141002090523&path-prefix=en",
     id: 151,
   },
-];
+]);
