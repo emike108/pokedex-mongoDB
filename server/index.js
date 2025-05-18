@@ -1,8 +1,7 @@
 const express = require("express");
 const path = require("path");
-// Import the mongoose module to connect to MongoDB
 const mongoose = require("mongoose");
-const Pokemon = require("../db/models/pokemonSchema");
+const pokemonRoutes = require("./routes/pokemon");
 
 const app = express();
 const port = 3000;
@@ -38,20 +37,5 @@ app.use(
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
-// Define a route handler for the default home page
-app.get("/", (_req, res) => {
-  res.send("Hello World!");
-});
-
-// Route that goes through the server to get to the database
-app.get("/pokemon", async (_req, res) => {
-  try {
-    const pokemons = await Pokemon.find({});
-    res.status(200).json(pokemons);
-  } catch (err) {
-    console.error("Error fetching pokemons", err);
-    res.status(500).send("Server error");
-  }
-});
-
-//TODO: Create or replace the home route with route that pulls data from the database
+// Routes to handle API requests
+app.use("/pokemon", pokemonRoutes);
