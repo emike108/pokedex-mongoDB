@@ -34,27 +34,40 @@ A Pokedex application built with MongoDB, Express, React, and Node.js (MERN stac
     npm install
    ```
 
-4. Spin up the MongoDB database using Docker:
+4. Spin up the MongoDB database using Docker and seed it with initial data:
 
-   In a terminal at the root of the project, run:
-   (Note, can add/remove the -d flag to run in detached mode if desired)
+   There are two methods to seed the database, both of which are valid:
 
-   ```
-   docker run -d --name pokemonDB -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=user -e MONGO_INITDB_ROOT_PASSWORD=password mongo:latest
+   - docker via terminal + manual seed with node script
+   - via docker-compose and automatic seeding
 
-   ```
+   - **Method 1: Using Docker via terminal and manual seeding**
 
-5. Seed the database:
+     - Spin up your docker container via the terminal with the following command:
+     - (Note, can add/remove the -d flag to run in detached mode if desired)
 
-   In a terminal at the root of the project, run:
+       ```
+       docker run --name pokedexDB -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=user -e MONGO_INITDB_ROOT_PASSWORD=password mongo:latest
+       ```
 
-   ```
-   node seedPokemon.js
-   ```
+     - Seed the database with the following command in a separate terminal from the root of the project:
+       ```
+       node seedPokemon.js
+       ```
 
-   This will populate the database with sample Pokemon data
+   - **Method 2: Using Docker Compose**
 
-6. Start the server:
+     - You also have the option to spin up the MongoDB container using Docker Compose, which will automatically seed the database with initial data.
+     - Run the following command from the root of the project:
+
+       ```
+       docker-compose up
+       ```
+
+     - This will start the MongoDB container and automatically seed the database with the initial data.
+       - Note: You can stop the container with `docker-compose down` when you're done.
+
+5. Start the server:
 
    In a terminal at the root of the project, run:
 
@@ -62,7 +75,7 @@ A Pokedex application built with MongoDB, Express, React, and Node.js (MERN stac
    npm start
    ```
 
-7. Start webpack
+6. Start webpack
 
    In a separate terminal at the root of the project, run:
 
@@ -81,6 +94,7 @@ A Pokedex application built with MongoDB, Express, React, and Node.js (MERN stac
 - Filter Pokemon by type.
 - View details of a Pokemon.
 - Add a Pokemon to the Pokedex.
+- Search for a Pokemon by name.
 
 ## Contributing
 
