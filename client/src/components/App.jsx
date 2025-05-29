@@ -84,7 +84,7 @@ export function App() {
         </Button>
         <Tooltip
           arrow
-          title="Our PokeTrainers are exploring new lands, soon we will be able to add new Pokemons!"
+          title="Our PokeTrainers are exploring new lands, soon we will be able to add new Pokemons!!"
         >
           <Box display="flex">
             <Button variant="contained" disabled>
