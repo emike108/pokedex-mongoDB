@@ -18,6 +18,11 @@
   },
   "homepage": "https://github.com/parkderick/hrla35-review#readme",
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@fontsource/roboto": "^5.2.5",
+    "@mui/icons-material": "^7.1.0",
+    "@mui/material": "^7.1.0",
     "axios": "^0.23.0",
     "express": "^4.17.1",
     "mongoose": "^6.0.12",
