@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useState } from "react";
+import { fetchAll, fetchByType } from "../apiCalls.js";
 import { PokemonList } from "./PokemonList.jsx";
 
 export function App() {
@@ -7,7 +7,7 @@ export function App() {
   const [selectedPokemonType, setSelectedPokemonType] = useState("");
   const [isHelperTextRendered, setIsHelperTextRendered] = useState(false);
 
-  function showAll() {
+  async function handleButtonClick() {
     if (selectedPokemonType === "" || selectedPokemonType === "Sort by Type") {
       setIsHelperTextRendered(true);
       setPokemonsToDisplay([]);
@@ -15,21 +15,14 @@ export function App() {
     }
     setIsHelperTextRendered(false);
 
-    // Calling the route established in the server that then goes to the database
-    axios
-      .get("/pokemon")
-      .then((results) => {
-        if (selectedPokemonType === "Show All") {
-          setPokemonsToDisplay(results.data);
-        } else {
-          setPokemonsToDisplay(
-            results.data.filter((eachPokemon) => {
-              return eachPokemon.type === selectedPokemonType;
-            })
-          );
-        }
-      })
-      .catch((err) => console.error(err));
+    if (selectedPokemonType === "Show All") {
+      const pokemon = await fetchAll();
+      setPokemonsToDisplay(pokemon);
+      return;
+    }
+
+    const pokemon = await fetchByType(selectedPokemonType);
+    setPokemonsToDisplay(pokemon);
   }
 
   function handleTypeSelection(event) {
@@ -41,7 +34,7 @@ export function App() {
     <div>
       <div>
         <h1>Pokemon!</h1>
-        <button onClick={showAll}>Show All</button>
+        <button onClick={handleButtonClick}>Show All</button>
         <select id="type" onChange={handleTypeSelection}>
           <option>Sort by Type</option>
           <option>Show All</option>
