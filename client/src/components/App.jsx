@@ -1,6 +1,7 @@
 import { MenuItem } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Stack from "@mui/material/Stack";
 import Tooltip from "@mui/material/Tooltip";
@@ -10,7 +11,7 @@ import { fetchAll, fetchByType } from "../apiCalls.js";
 import { PokemonList } from "./PokemonList.jsx";
 import { pokemonTypes } from "./utils.js";
 
-const showAllTypes = "Show All";
+const allTypes = "All Types";
 
 export function App() {
   const [pokemonsToDisplay, setPokemonsToDisplay] = useState([]);
@@ -25,7 +26,7 @@ export function App() {
     }
     setIsHelperTextRendered(false);
 
-    if (selectedPokemonType === showAllTypes) {
+    if (selectedPokemonType === allTypes) {
       const pokemon = await fetchAll();
       setPokemonsToDisplay(pokemon);
       return;
@@ -48,12 +49,12 @@ export function App() {
 
   return (
     <Stack alignItems="center">
-      <Typography variant="h1">Pokemon!</Typography>
+      <Typography variant="h1">PokéDex!</Typography>
       <Box display="flex" gap="16px">
         <Button variant="contained" onClick={handleButtonClick}>
-          Show
+          View
         </Button>
-        <Box width="150px">
+        <FormControl width="150px">
           <Select
             id="type-selection"
             value={selectedPokemonType}
@@ -70,7 +71,7 @@ export function App() {
               return selected;
             }}
           >
-            {[showAllTypes, ...pokemonTypes].map((type, index) => {
+            {[allTypes, ...pokemonTypes].map((type, index) => {
               return (
                 <MenuItem key={index} value={type}>
                   {type}
@@ -78,7 +79,7 @@ export function App() {
               );
             })}
           </Select>
-        </Box>
+        </FormControl>
         <Button variant="outlined" onClick={handleClearButton}>
           Clear
         </Button>
