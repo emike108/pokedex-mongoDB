@@ -54,7 +54,7 @@ export function App() {
         <Button variant="contained" onClick={handleButtonClick}>
           View
         </Button>
-        <FormControl width="150px">
+        <FormControl sx={{ width: "150px" }}>
           <Select
             id="type-selection"
             value={selectedPokemonType}
