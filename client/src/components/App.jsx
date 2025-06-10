@@ -94,13 +94,19 @@ export function App() {
           </Box>
         </Tooltip>
       </Box>
-      <Box display="flex" padding="16px">
+      <Box
+        display="flex"
+        padding="24px 0px"
+        width="100%"
+        justifyContent="center"
+      >
         {isHelperTextRendered ? (
           <Box>
             <Typography>Please select a type to render</Typography>
           </Box>
-        ) : null}
-        <PokemonList pokemons={pokemonsToDisplay} />
+        ) : (
+          <PokemonList pokemons={pokemonsToDisplay} />
+        )}
       </Box>
     </Stack>
   );
