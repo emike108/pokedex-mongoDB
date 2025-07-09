@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import { fetchAll, fetchByType } from "../apiCalls.js";
 import { PokemonList } from "./PokemonList.jsx";
 import { pokemonTypes } from "./utils.js";
+// import pokeBackground from "../assets/img/pokeBackground.png"
 
 const allTypes = "All Types";
 
@@ -17,6 +18,7 @@ export function App() {
   const [pokemonsToDisplay, setPokemonsToDisplay] = useState([]);
   const [selectedPokemonType, setSelectedPokemonType] = useState("");
   const [isHelperTextRendered, setIsHelperTextRendered] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleButtonClick() {
     if (selectedPokemonType === "") {
@@ -27,13 +29,17 @@ export function App() {
     setIsHelperTextRendered(false);
 
     if (selectedPokemonType === allTypes) {
+      setIsLoading(true);
       const pokemon = await fetchAll();
       setPokemonsToDisplay(pokemon);
+      setIsLoading(false);
       return;
     }
 
+    setIsLoading(true);
     const pokemon = await fetchByType(selectedPokemonType);
     setPokemonsToDisplay(pokemon);
+    setIsLoading(false);
   }
 
   function handleClearButton() {
@@ -48,66 +54,86 @@ export function App() {
   }
 
   return (
-    <Stack alignItems="center">
-      <Typography variant="h1">PokéDex!</Typography>
-      <Box display="flex" gap="16px">
-        <Button variant="contained" onClick={handleButtonClick}>
-          View
-        </Button>
-        <FormControl sx={{ width: "150px" }}>
-          <Select
-            id="type-selection"
-            value={selectedPokemonType}
-            onChange={handleTypeSelection}
-            size="small"
-            sx={{
-              width: "100%",
-            }}
-            displayEmpty
-            renderValue={(selected) => {
-              if (selected.length === 0) {
-                return <em>Select a Type</em>;
-              }
-              return selected;
-            }}
-          >
-            {[allTypes, ...pokemonTypes].map((type, index) => {
-              return (
-                <MenuItem key={index} value={type}>
-                  {type}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
-        <Button variant="outlined" onClick={handleClearButton}>
-          Clear
-        </Button>
-        <Tooltip
-          arrow
-          title="Our PokeTrainers are exploring new lands, soon we will be able to add new Pokemons!!"
-        >
-          <Box display="flex">
-            <Button variant="contained" disabled>
-              Insert
-            </Button>
-          </Box>
-        </Tooltip>
-      </Box>
+    <Box
+      sx={{
+        // backgroundImage: `url(https://images.wallpapersden.com/image/wxl-pokemon-pikachu-art_69889.jpg)`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        minHeight: "100vh",
+        width: "100%",
+      }}
+    >
       <Box
-        display="flex"
-        padding="24px 0px"
-        width="100%"
-        justifyContent="center"
+        sx={{
+          backgroundColor: "rgba(255, 255, 255, 0.9)",
+          minHeight: "100vh",
+          width: "100%",
+          paddingTop: "20px",
+        }}
       >
-        {isHelperTextRendered ? (
-          <Box>
-            <Typography>Please select a type to render</Typography>
+        <Stack alignItems="center">
+          <Typography variant="h1">PokéDex!</Typography>
+          <Box display="flex" gap="16px">
+            <Button variant="contained" onClick={handleButtonClick}>
+              View
+            </Button>
+            <FormControl sx={{ width: "150px" }}>
+              <Select
+                id="type-selection"
+                value={selectedPokemonType}
+                onChange={handleTypeSelection}
+                size="small"
+                sx={{
+                  width: "100%",
+                }}
+                displayEmpty
+                renderValue={(selected) => {
+                  if (selected.length === 0) {
+                    return <em>Select a Type</em>;
+                  }
+                  return selected;
+                }}
+              >
+                {[allTypes, ...pokemonTypes].map((type, index) => {
+                  return (
+                    <MenuItem key={index} value={type}>
+                      {type}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </FormControl>
+            <Button variant="outlined" onClick={handleClearButton}>
+              Clear
+            </Button>
+            <Tooltip
+              arrow
+              title="Our PokeTrainers are exploring new lands, soon we will be able to add new Pokemons!!"
+            >
+              <Box display="flex">
+                <Button variant="contained" disabled>
+                  Insert
+                </Button>
+              </Box>
+            </Tooltip>
           </Box>
-        ) : (
-          <PokemonList pokemons={pokemonsToDisplay} />
-        )}
+          <Box
+            display="flex"
+            padding="24px 0px"
+            width="100%"
+            justifyContent="center"
+          >
+            {isHelperTextRendered ? (
+              <Box>
+                <Typography>Please select a type to render</Typography>
+              </Box>
+            ) : (
+              <PokemonList pokemons={pokemonsToDisplay} isLoading={isLoading} />
+            )}
+          </Box>
+        </Stack>
       </Box>
-    </Stack>
+    </Box>
   );
 }

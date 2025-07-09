@@ -2,12 +2,12 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import React from "react";
 import { pokemonTypeColors } from "./utils";
-
-//create box shadowColorMap
-//dependant on the pokemon type
+import Skeleton from "@mui/material/Skeleton";
 
 export function PokemonEntry(props) {
-  return (
+  return props.isLoading ? (
+    <Skeleton variant="rounded" height={200} width={150} />
+  ) : (
     <Box
       gap={1}
       display="flex"

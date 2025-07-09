@@ -19,7 +19,7 @@ export function PokemonList(props) {
           justifyContent="center"
           alignItems="center"
         >
-          <PokemonEntry pokemon={pokemon} />
+          <PokemonEntry pokemon={pokemon} isLoading={props.isLoading} />
         </Grid>
       ))}
     </Grid>
