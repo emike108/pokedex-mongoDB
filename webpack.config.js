@@ -1,6 +1,6 @@
 var path = require("path");
-var SRC_DIR = path.join(__dirname, "/client/src");
-var DIST_DIR = path.join(__dirname, "/client/dist");
+var SRC_DIR = path.join(__dirname, "client/src");
+var DIST_DIR = path.join(__dirname, "client/dist");
 
 module.exports = {
   entry: `${SRC_DIR}/index.jsx`,
@@ -17,6 +17,18 @@ module.exports = {
         options: {
           presets: ["@babel/preset-env", "@babel/preset-react"],
         },
+      },
+      {
+        test: /\.(png)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[hash].[ext]",
+              outputPath: "images/",
+            },
+          },
+        ],
       },
     ],
   },

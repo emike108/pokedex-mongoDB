@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import { fetchAll, fetchByType } from "../apiCalls.js";
 import { PokemonList } from "./PokemonList.jsx";
 import { pokemonTypes } from "./utils.js";
-// import pokeBackground from "../assets/img/pokeBackground.png"
+import pokeBackground from "../assets/img/pokeBackground.png";
 
 const allTypes = "All Types";
 
@@ -56,19 +56,16 @@ export function App() {
   return (
     <Box
       sx={{
-        // backgroundImage: `url(https://images.wallpapersden.com/image/wxl-pokemon-pikachu-art_69889.jpg)`,
+        backgroundImage: `url(${pokeBackground})`,
+        backgroundAttachment: "fixed",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         minHeight: "100vh",
-        width: "100%",
       }}
     >
       <Box
         sx={{
-          backgroundColor: "rgba(255, 255, 255, 0.9)",
-          minHeight: "100vh",
-          width: "100%",
           paddingTop: "20px",
         }}
       >
@@ -86,6 +83,7 @@ export function App() {
                 size="small"
                 sx={{
                   width: "100%",
+                  background: "white",
                 }}
                 displayEmpty
                 renderValue={(selected) => {
@@ -104,7 +102,13 @@ export function App() {
                 })}
               </Select>
             </FormControl>
-            <Button variant="outlined" onClick={handleClearButton}>
+            <Button
+              variant="outlined"
+              onClick={handleClearButton}
+              sx={{
+                backgroundColor: "lightblue",
+              }}
+            >
               Clear
             </Button>
             <Tooltip

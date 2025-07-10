@@ -14,6 +14,7 @@ export function PokemonEntry(props) {
       flexDirection="column"
       sx={{
         padding: 1,
+        backgroundColor: "white",
         border: "1px solid #182653",
         borderRadius: "8px",
         boxShadow: `${pokemonTypeColors[props.pokemon.type]} 6px 8px 7px`,
