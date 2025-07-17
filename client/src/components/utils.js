@@ -1,0 +1,33 @@
+export const pokemonTypes = [
+  "Bug",
+  "Dragon",
+  "Electric",
+  "Fighting",
+  "Fire",
+  "Ghost",
+  "Grass",
+  "Ground",
+  "Ice",
+  "Normal",
+  "Poison",
+  "Psychic",
+  "Rock",
+  "Water",
+];
+
+export const pokemonTypeColors = {
+  Bug: "#A6B91A",
+  Dragon: "#9f9436",
+  Electric: "#ffe129",
+  Fighting: "#c55022",
+  Fire: "#ef4a3a",
+  Ghost: "#735797",
+  Grass: "#a4c852",
+  Ground: "#E2BF65",
+  Ice: "#96D9D6",
+  Normal: "#A8A77A",
+  Poison: "#005663",
+  Psychic: "#855ba5",
+  Rock: "#B6A136",
+  Water: "#0ca6e0",
+};
