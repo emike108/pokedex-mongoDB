@@ -70,7 +70,14 @@ export function App() {
         }}
       >
         <Stack alignItems="center">
-          <Typography variant="h1">PokéDex!</Typography>
+          <Typography
+            className="pokemon-text"
+            sx={{
+              fontSize: "90px",
+            }}
+          >
+            PokéDex!
+          </Typography>
           <Box display="flex" gap="16px">
             <Button variant="contained" onClick={handleButtonClick}>
               View
@@ -130,7 +137,14 @@ export function App() {
           >
             {isHelperTextRendered ? (
               <Box>
-                <Typography>Please select a type to render</Typography>
+                <Typography
+                  className="pokemon-text"
+                  sx={{
+                    fontSize: "32px",
+                  }}
+                >
+                  Please select a Pokémon type to filter by
+                </Typography>
               </Box>
             ) : (
               <PokemonList pokemons={pokemonsToDisplay} isLoading={isLoading} />
